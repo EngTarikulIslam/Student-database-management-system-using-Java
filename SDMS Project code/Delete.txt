@@ -1,0 +1,104 @@
+try {
+            String lineToRemove = "ISLAM /212002000 /EEE /01817320620 /AB+ /islam@gmail.com";
+            String file = "StudentInfo.txt";
+            File inFile = new File("StudentInfo.txt");
+ 
+            //Construct the new file that will later be renamed to the original filename.
+            File tempFile = new File(inFile.getAbsolutePath()+".txt");
+ 
+            BufferedReader br;
+            PrintWriter pw;
+            br = new BufferedReader(new FileReader(inFile));
+            pw = new PrintWriter(new FileWriter(tempFile));
+ 
+            String line = null;
+ 
+            //Read from the original file and write to the new
+            //unless content matches data to be removed.
+            while ((line = br.readLine()) != null) {
+                if (!line.trim().equals(lineToRemove)){
+                    pw.println(line);
+                    pw.flush();
+                }
+            }
+            pw.close();
+            br.close();
+//            if (inFile.exists()){
+//                inFile.delete();
+//                JOptionPane.showMessageDialog(null, "File Successfully Deleted!");
+//            }
+            if(tempFile.exists()){
+                tempFile.renameTo(inFile);
+                JOptionPane.showMessageDialog(null, "File rename Successfull"); 
+            }
+            
+ 
+            //Rename the new file to the filename the original file had.
+//          if (!tempFile.renameTo(inFile))
+//          System.out.println("Could not rename file");
+        }catch (FileNotFoundException ex) {
+            }catch (IOException ex) {
+            }
+        
+        
+        
+
+        
+        
+//        DefaultTableModel model= (DefaultTableModel)table.getModel();
+//        if(table.getSelectedRowCount()==1){
+//            model.removeRow(table.getSelectedRow());  
+//            
+//            String filepath="D:\\1.UNIVERSITY\\1.CSE-103\\ALL CSE-LAB\\CSE LAB- 202\\Lab Project\\Project\\StudentInfo.txt";
+//             try {
+//                String lineToRemove = "ISLAM /212002000 /EEE /01817320620 /AB+ /islam@gmail.com";
+//                String file = filepath;
+//                File inFile = new File("StudentInfo.txt");
+// 
+//                if (!inFile.isFile()) {
+//                    JOptionPane.showMessageDialog(this,"Data not found");
+//                    return;
+//                }
+// 
+//                //Construct the new file that will later be renamed to the original filename.
+//                File tempFile = new File(inFile.getAbsolutePath()+".tmp");
+// 
+//                try (BufferedReader br = new BufferedReader(new FileReader(file));
+//                     PrintWriter pw = new PrintWriter(new FileWriter(tempFile));){
+//                         
+//                    String line = null;
+//                    
+//                    //Read from the original file and write to the new
+//                    //unless content matches data to be removed.
+//                    while ((line = br.readLine()) != null) {
+//                        if (!line.trim().equals(lineToRemove)) {
+//                            pw.println(line);
+//                            pw.flush();
+//                        }
+//                    }
+//                    pw.close();
+//                    br.close();
+//                }
+// 
+//                //Delete the original file
+//                if (!inFile.delete()) {
+//                    System.out.println("Could not delete file");
+//                    return;
+//                }
+// 
+//                //Rename the new file to the filename the original file had.
+//                if (!tempFile.renameTo(inFile))
+//                    System.out.println("Could not rename file");
+// 
+//                }
+//                catch (FileNotFoundException ex) {
+//                } catch (IOException ex) {
+//            }
+//        } 
+//        else{
+//            if(table.getRowCount()==0){
+//            JOptionPane.showMessageDialog(this,"Table load first\nThen Delet data");
+//            }
+//            else
+//                JOptionPane.showMessageDialog(this,"Select any row");      
+//       }
